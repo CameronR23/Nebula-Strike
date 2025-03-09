@@ -1,0 +1,79 @@
+[gd_scene load_steps=14 format=3 uid="uid://1jbs8yatx505"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_faixx"]
+[ext_resource type="Texture2D" uid="uid://cxtod2a7hxv07" path="res://assets/Space Shooter files/player/sprites/player3.png" id="2_d2t8n"]
+[ext_resource type="Texture2D" uid="uid://cebkncjh1imv8" path="res://assets/Space Shooter files/player/sprites/player1.png" id="3_uaqs6"]
+[ext_resource type="Texture2D" uid="uid://bmj5ac3w0oc0h" path="res://assets/Space Shooter files/player/sprites/player2.png" id="4_ed314"]
+[ext_resource type="AudioStream" uid="uid://dai43ju40d7b6" path="res://assets/Space Shooter files/Sound FX/hit.wav" id="5_ny2wi"]
+[ext_resource type="AudioStream" uid="uid://b2f0cvnb3m1bl" path="res://assets/Space Shooter files/Sound FX/shot 1.wav" id="6_mdicu"]
+[ext_resource type="AudioStream" uid="uid://s4jeowyfdni0" path="res://assets/Space Shooter files/Sound FX/shot 2.wav" id="7_ynyut"]
+[ext_resource type="AudioStream" uid="uid://cd54obeu38yrm" path="res://assets/Space Shooter files/Sound FX/explosion.wav" id="8_63j5y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0idf"]
+atlas = ExtResource("2_d2t8n")
+region = Rect2(0, 0, 26, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvn43"]
+atlas = ExtResource("3_uaqs6")
+region = Rect2(0, 0, 26, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwamo"]
+atlas = ExtResource("4_ed314")
+region = Rect2(0, 0, 26, 21)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6nscv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0idf")
+}],
+"loop": true,
+"name": &"bottom",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvn43")
+}],
+"loop": true,
+"name": &"side",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwamo")
+}],
+"loop": true,
+"name": &"top",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5xr34"]
+size = Vector2(21, 11)
+
+[node name="player" type="CharacterBody2D"]
+z_index = 5
+script = ExtResource("1_faixx")
+
+[node name="animated_sprite" type="AnimatedSprite2D" parent="."]
+z_index = 5
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_6nscv")
+animation = &"side"
+
+[node name="collision_shape" type="CollisionShape2D" parent="."]
+z_index = 5
+position = Vector2(0.5, -1.5)
+shape = SubResource("RectangleShape2D_5xr34")
+
+[node name="audio_stream_player_hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_ny2wi")
+
+[node name="audio_stream_player_shot1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_mdicu")
+
+[node name="audio_stream_player_shot2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_ynyut")
+
+[node name="audio_steam_player_explosion" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_63j5y")

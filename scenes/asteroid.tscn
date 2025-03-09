@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://djq15t1ctrqxp"]
+
+[ext_resource type="Script" path="res://scripts/asteroid.gd" id="1_c8mjy"]
+[ext_resource type="Texture2D" uid="uid://m8ox7nd88yud" path="res://assets/Space Shooter files/asteroids/asteroid.png" id="1_m2ucy"]
+[ext_resource type="Texture2D" uid="uid://c5bf8rre3xc2p" path="res://assets/Space Shooter files/asteroids/asteroid-small.png" id="2_mecpx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6t45i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_m2ucy")
+}],
+"loop": true,
+"name": &"big",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mecpx")
+}],
+"loop": true,
+"name": &"small",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_755pk"]
+
+[node name="asteroid" type="CharacterBody2D"]
+script = ExtResource("1_c8mjy")
+
+[node name="animated_sprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_6t45i")
+animation = &"small"
+
+[node name="area" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="collision_shape" type="CollisionShape2D" parent="area"]
+shape = SubResource("CircleShape2D_755pk")
+
+[connection signal="area_entered" from="area" to="." method="_on_area_area_entered"]
+[connection signal="body_entered" from="area" to="." method="_on_area_body_entered"]

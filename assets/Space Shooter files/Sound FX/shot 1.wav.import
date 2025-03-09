@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b2f0cvnb3m1bl"
+path="res://.godot/imported/shot 1.wav-74201f38136b3b673b2c08c58e2ef73e.sample"
+
+[deps]
+
+source_file="res://assets/Space Shooter files/Sound FX/shot 1.wav"
+dest_files=["res://.godot/imported/shot 1.wav-74201f38136b3b673b2c08c58e2ef73e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

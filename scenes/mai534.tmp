@@ -1,0 +1,125 @@
+[gd_scene load_steps=12 format=3 uid="uid://brs1yb4ckcpeu"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_7g1tr"]
+[ext_resource type="PackedScene" uid="uid://dcywpvapdxh3r" path="res://scenes/background.tscn" id="1_c67ue"]
+[ext_resource type="PackedScene" uid="uid://1jbs8yatx505" path="res://scenes/player.tscn" id="2_2nfkk"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="4_sg7ps"]
+[ext_resource type="Texture2D" uid="uid://3en0dyt8gfp0" path="res://assets/menu/GUI.png" id="5_fp333"]
+[ext_resource type="FontFile" uid="uid://q61j867gamcj" path="res://assets/menu/upheavtt.ttf" id="6_cpaim"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_guwg8"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6mfxb"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wqt75"]
+texture = ExtResource("5_fp333")
+region_rect = Rect2(135, 20, 52, 7)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6idxx"]
+texture = ExtResource("5_fp333")
+region_rect = Rect2(8, 6, 42, 3)
+
+[sub_resource type="LabelSettings" id="LabelSettings_14n4g"]
+font = ExtResource("6_cpaim")
+font_size = 128
+shadow_size = 32
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_7g1tr")
+
+[node name="boundaries" type="CanvasLayer" parent="."]
+
+[node name="top" type="MarginContainer" parent="boundaries"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="h_box_container" type="HBoxContainer" parent="boundaries/top"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="static_body" type="StaticBody2D" parent="boundaries/top/h_box_container"]
+
+[node name="collision_shape" type="CollisionShape2D" parent="boundaries/top/h_box_container/static_body"]
+shape = SubResource("WorldBoundaryShape2D_guwg8")
+
+[node name="bottom" type="MarginContainer" parent="boundaries"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="h_box_container" type="HBoxContainer" parent="boundaries/bottom"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="static_body" type="StaticBody2D" parent="boundaries/bottom/h_box_container"]
+
+[node name="collision_shape" type="CollisionShape2D" parent="boundaries/bottom/h_box_container/static_body"]
+shape = SubResource("WorldBoundaryShape2D_6mfxb")
+
+[node name="player" parent="." instance=ExtResource("2_2nfkk")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(1150, 750)
+script = ExtResource("4_sg7ps")
+
+[node name="background" type="CanvasLayer" parent="Camera2D"]
+layer = -1
+follow_viewport_enabled = true
+
+[node name="background2" parent="Camera2D/background" instance=ExtResource("1_c67ue")]
+scale = Vector2(1.1, 1.1)
+
+[node name="GUI" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="GUI"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ProgressBar" type="ProgressBar" parent="GUI/MarginContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxTexture_wqt75")
+theme_override_styles/fill = SubResource("StyleBoxTexture_6idxx")
+value = 50.0
+show_percentage = false
+
+[node name="MarginContainer2" type="MarginContainer" parent="GUI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -11.5
+offset_right = 27.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="Label" type="Label" parent="GUI/MarginContainer2"]
+layout_mode = 2
+text = "Level 1"
+label_settings = SubResource("LabelSettings_14n4g")

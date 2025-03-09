@@ -1,0 +1,186 @@
+[gd_scene load_steps=14 format=3 uid="uid://bj0qcoihc7mnf"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_6h4i2"]
+[ext_resource type="PackedScene" uid="uid://dcywpvapdxh3r" path="res://scenes/background.tscn" id="1_hlfqk"]
+[ext_resource type="Texture2D" uid="uid://b2fsavj43ejq2" path="res://assets/menu/title.png" id="3_bylrg"]
+[ext_resource type="StyleBox" uid="uid://danarka41tkyl" path="res://themes/main_menu.tres" id="4_8oeee"]
+[ext_resource type="FontFile" uid="uid://q61j867gamcj" path="res://assets/menu/upheavtt.ttf" id="4_efoqt"]
+[ext_resource type="Texture2D" uid="uid://3en0dyt8gfp0" path="res://assets/menu/GUI.png" id="4_hgm2t"]
+
+[sub_resource type="Theme" id="Theme_xxjfl"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xoaib"]
+texture = ExtResource("4_hgm2t")
+region_rect = Rect2(145, 80, 47, 16)
+modulate_color = Color(0.336608, 0.336608, 0.336608, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iepxk"]
+texture = ExtResource("4_hgm2t")
+region_rect = Rect2(145, 80, 47, 16)
+modulate_color = Color(0.32549, 0.627451, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pesqp"]
+font = ExtResource("4_efoqt")
+font_size = 160
+outline_size = 20
+outline_color = Color(0, 0.30285, 0.570041, 1)
+
+[sub_resource type="Animation" id="Animation_yufsa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(126, 200)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-71, 220)]
+}
+
+[sub_resource type="Animation" id="Animation_tu0ok"]
+resource_name = "exit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.866667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(677, 627), Vector2(677, 1893)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(480, 207), Vector2(480, -1059)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nby5f"]
+_data = {
+"RESET": SubResource("Animation_yufsa"),
+"exit": SubResource("Animation_tu0ok")
+}
+
+[node name="main_menu" type="Node2D"]
+script = ExtResource("1_6h4i2")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="margin_container" parent="CanvasLayer" instance=ExtResource("1_hlfqk")]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -1198.0
+offset_top = 220.0
+offset_right = 96.0
+offset_bottom = 363.0
+grow_horizontal = 2
+scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(647, -50)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("3_bylrg")
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1001.0
+offset_top = -551.0
+offset_right = -101.0
+offset_bottom = -51.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer2"]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+alignment = 1
+
+[node name="play" type="Button" parent="CanvasLayer/MarginContainer2/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_xxjfl")
+theme_override_styles/focus = ExtResource("4_8oeee")
+theme_override_styles/disabled_mirrored = ExtResource("4_8oeee")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_xoaib")
+theme_override_styles/hover = SubResource("StyleBoxTexture_iepxk")
+theme_override_styles/pressed = ExtResource("4_8oeee")
+theme_override_styles/normal = ExtResource("4_8oeee")
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer2/VBoxContainer/play"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play"
+label_settings = SubResource("LabelSettings_pesqp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="quit" type="Button" parent="CanvasLayer/MarginContainer2/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme_xxjfl")
+theme_override_styles/focus = ExtResource("4_8oeee")
+theme_override_styles/disabled_mirrored = ExtResource("4_8oeee")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_xoaib")
+theme_override_styles/hover = SubResource("StyleBoxTexture_iepxk")
+theme_override_styles/pressed = ExtResource("4_8oeee")
+theme_override_styles/normal = ExtResource("4_8oeee")
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer2/VBoxContainer/quit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+label_settings = SubResource("LabelSettings_pesqp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+libraries = {
+"": SubResource("AnimationLibrary_nby5f")
+}
+autoplay = "exit"
+
+[connection signal="button_down" from="CanvasLayer/MarginContainer2/VBoxContainer/play" to="." method="_on_play_button_down"]
+[connection signal="button_down" from="CanvasLayer/MarginContainer2/VBoxContainer/quit" to="." method="_on_quit_button_down"]
+[connection signal="animation_finished" from="CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

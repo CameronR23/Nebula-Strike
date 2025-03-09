@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://c3f8pana36j7e"]
+
+[ext_resource type="Texture2D" uid="uid://0ei3vkcxt3c8" path="res://assets/Space Shooter files/Hit/hit.png" id="1_mfmjj"]
+[ext_resource type="Script" path="res://scripts/hit.gd" id="2_ufkib"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvqul"]
+atlas = ExtResource("1_mfmjj")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o51au"]
+atlas = ExtResource("1_mfmjj")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wehwh"]
+atlas = ExtResource("1_mfmjj")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjg66"]
+atlas = ExtResource("1_mfmjj")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0muwt"]
+atlas = ExtResource("1_mfmjj")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qfr6w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvqul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o51au")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wehwh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjg66")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0muwt")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 5.0
+}]
+
+[node name="hit" type="AnimatedSprite2D"]
+z_index = 10
+texture_filter = 1
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_qfr6w")
+animation = &"hit"
+autoplay = "hit"
+speed_scale = 2.0
+script = ExtResource("2_ufkib")

@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://7hl4nviveia5"]
+
+[ext_resource type="Texture2D" uid="uid://c4do3yvy5ss6k" path="res://assets/Space Shooter files/shoot/shoot1.png" id="1_vpmxj"]
+[ext_resource type="Texture2D" uid="uid://ddfipo6ymbaqk" path="res://assets/Space Shooter files/flash/flash.png" id="2_tj1tr"]
+[ext_resource type="Texture2D" uid="uid://dwjnjcisklr1b" path="res://assets/Space Shooter files/shoot/shoot2.png" id="2_ufb57"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sjomd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_tj1tr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_tj1tr")
+}],
+"loop": false,
+"name": &"flash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_vpmxj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ufb57")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0k4f1"]
+size = Vector2(184, 64)
+
+[node name="shoot" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 0
+gravity_scale = 0.0
+continuous_cd = 1
+constant_force = Vector2(5000, 0)
+
+[node name="animated_sprite" type="AnimatedSprite2D" parent="."]
+z_index = 15
+texture_filter = 1
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_sjomd")
+animation = &"flash"
+autoplay = "shoot"
+frame = 1
+frame_progress = 1.0
+speed_scale = 10.0
+
+[node name="collision_shape" type="CollisionShape2D" parent="."]
+position = Vector2(4, -9.53674e-07)
+shape = SubResource("RectangleShape2D_0k4f1")

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://rwf3kr4sevjx"]
+
+[ext_resource type="AudioStream" uid="uid://uryotorlawer" path="res://assets/music/retro-beat-284125.mp3" id="1_r5qaa"]
+[ext_resource type="Script" path="res://scripts/background_music.gd" id="2_kkenf"]
+[ext_resource type="AudioStream" uid="uid://bq8gxxuop5r5w" path="res://assets/music/game-over-classic-206486.mp3" id="3_eht1y"]
+
+[node name="background_music" type="AudioStreamPlayer"]
+stream = ExtResource("1_r5qaa")
+volume_db = -20.0
+autoplay = true
+parameters/looping = true
+script = ExtResource("2_kkenf")
+
+[node name="game_over" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_eht1y")
+volume_db = -10.0
+
+[connection signal="finished" from="game_over" to="." method="_on_game_over_finished"]

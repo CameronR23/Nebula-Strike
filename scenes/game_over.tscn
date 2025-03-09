@@ -1,0 +1,198 @@
+[gd_scene load_steps=21 format=3 uid="uid://cnu2qyftx2qil"]
+
+[ext_resource type="PackedScene" uid="uid://dcywpvapdxh3r" path="res://scenes/background.tscn" id="1_8d0lm"]
+[ext_resource type="Script" path="res://scripts/game_over.gd" id="1_tghfl"]
+[ext_resource type="FontFile" uid="uid://q61j867gamcj" path="res://assets/menu/upheavtt.ttf" id="3_2e4fr"]
+[ext_resource type="StyleBox" uid="uid://danarka41tkyl" path="res://themes/main_menu.tres" id="4_fetva"]
+[ext_resource type="Texture2D" uid="uid://3en0dyt8gfp0" path="res://assets/menu/GUI.png" id="5_wbii8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ey5xt"]
+font = ExtResource("3_2e4fr")
+font_size = 224
+shadow_size = 64
+shadow_color = Color(0.427451, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f4mpa"]
+texture = ExtResource("5_wbii8")
+region_rect = Rect2(145, 80, 47, 16)
+modulate_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0flfv"]
+texture = ExtResource("5_wbii8")
+region_rect = Rect2(145, 80, 47, 16)
+modulate_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bovbi"]
+texture = ExtResource("5_wbii8")
+region_rect = Rect2(145, 80, 47, 16)
+modulate_color = Color(0.336608, 0.336608, 0.336608, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kaqfs"]
+texture = ExtResource("5_wbii8")
+region_rect = Rect2(145, 80, 47, 16)
+modulate_color = Color(0.612299, 1.50409e-06, 5.77569e-07, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7cafs"]
+texture = ExtResource("5_wbii8")
+region_rect = Rect2(145, 80, 47, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s6hf5"]
+texture = ExtResource("5_wbii8")
+region_rect = Rect2(145, 80, 47, 16)
+modulate_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2k2a2"]
+font = ExtResource("3_2e4fr")
+font_size = 112
+outline_size = 20
+outline_color = Color(0.58111, 0, 0.121535, 1)
+
+[sub_resource type="Theme" id="Theme_m8l1e"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ap6ey"]
+texture = ExtResource("5_wbii8")
+region_rect = Rect2(145, 80, 47, 16)
+modulate_color = Color(0.336608, 0.336608, 0.336608, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1ankw"]
+texture = ExtResource("5_wbii8")
+region_rect = Rect2(145, 80, 47, 16)
+modulate_color = Color(0.611765, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v27sr"]
+texture = ExtResource("5_wbii8")
+region_rect = Rect2(145, 80, 47, 16)
+modulate_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8srt4"]
+font = ExtResource("3_2e4fr")
+font_size = 112
+outline_size = 20
+outline_color = Color(0.58111, 0, 0.121535, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cyxr0"]
+texture = ExtResource("5_wbii8")
+region_rect = Rect2(145, 80, 47, 16)
+modulate_color = Color(0.611765, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xor1q"]
+texture = ExtResource("5_wbii8")
+region_rect = Rect2(145, 80, 47, 16)
+modulate_color = Color(1, 0, 0, 1)
+
+[node name="game_over" type="Node2D"]
+script = ExtResource("1_tghfl")
+
+[node name="background" type="CanvasLayer" parent="."]
+
+[node name="margin_container" parent="background" instance=ExtResource("1_8d0lm")]
+modulate = Color(1, 0, 0, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -840.0
+offset_right = 840.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Game Over"
+label_settings = SubResource("LabelSettings_ey5xt")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="restart" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(1000, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/focus = SubResource("StyleBoxTexture_f4mpa")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxTexture_0flfv")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_bovbi")
+theme_override_styles/hover = SubResource("StyleBoxTexture_kaqfs")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7cafs")
+theme_override_styles/normal = SubResource("StyleBoxTexture_s6hf5")
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/restart"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "restart"
+label_settings = SubResource("LabelSettings_2k2a2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="main menu" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(1000, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_m8l1e")
+theme_override_styles/focus = ExtResource("4_fetva")
+theme_override_styles/disabled_mirrored = ExtResource("4_fetva")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_ap6ey")
+theme_override_styles/hover = SubResource("StyleBoxTexture_1ankw")
+theme_override_styles/pressed = ExtResource("4_fetva")
+theme_override_styles/normal = SubResource("StyleBoxTexture_v27sr")
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/main menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "main menu"
+label_settings = SubResource("LabelSettings_8srt4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="quit" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(1000, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_m8l1e")
+theme_override_styles/focus = ExtResource("4_fetva")
+theme_override_styles/disabled_mirrored = ExtResource("4_fetva")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_ap6ey")
+theme_override_styles/hover = SubResource("StyleBoxTexture_cyxr0")
+theme_override_styles/pressed = ExtResource("4_fetva")
+theme_override_styles/normal = SubResource("StyleBoxTexture_xor1q")
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/quit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "quit
+"
+label_settings = SubResource("LabelSettings_8srt4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_down" from="CanvasLayer/MarginContainer/VBoxContainer/restart" to="." method="_on_restart_button_down"]
+[connection signal="button_down" from="CanvasLayer/MarginContainer/VBoxContainer/main menu" to="." method="_on_main_menu_button_down"]
+[connection signal="button_down" from="CanvasLayer/MarginContainer/VBoxContainer/quit" to="." method="_on_quit_button_down"]

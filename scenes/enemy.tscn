@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://c7yftn0yj64nx"]
+
+[ext_resource type="Texture2D" uid="uid://b7sj8ynm775mo" path="res://assets/Space Shooter files/enemy/spritesheet.png" id="1_drr6w"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_x28xa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmb50"]
+atlas = ExtResource("1_drr6w")
+region = Rect2(0, 0, 29, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owd84"]
+atlas = ExtResource("1_drr6w")
+region = Rect2(29, 0, 29, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xvw8m"]
+atlas = ExtResource("1_drr6w")
+region = Rect2(58, 0, 29, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3am6k"]
+atlas = ExtResource("1_drr6w")
+region = Rect2(87, 0, 29, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tt3eo"]
+atlas = ExtResource("1_drr6w")
+region = Rect2(116, 0, 29, 29)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fmx88"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmb50")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owd84")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xvw8m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3am6k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tt3eo")
+}],
+"loop": true,
+"name": &"spin",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r0mma"]
+size = Vector2(20, 6)
+
+[node name="enemy" type="CharacterBody2D"]
+script = ExtResource("1_x28xa")
+
+[node name="animated_sprite" type="AnimatedSprite2D" parent="."]
+z_index = 10
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_fmx88")
+animation = &"spin"
+autoplay = "spin"
+frame_progress = 0.0511586
+
+[node name="area" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="collision_shape" type="CollisionShape2D" parent="area"]
+z_index = 10
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_r0mma")
+
+[connection signal="body_entered" from="area" to="." method="_on_area_body_entered"]
